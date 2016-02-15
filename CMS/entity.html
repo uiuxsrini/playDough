@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Miminium Admin Template v.1">
+    <meta name="author" content="Isna Nur Azis">
+    <meta name="keyword" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CMS</title>
+    <!-- start: Css -->
+    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+    <!-- plugins -->
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/simple-line-icons.css" />
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/fullcalendar.min.css" />
+    <link href="asset/css/style.css" rel="stylesheet">
+    <!-- end: Css -->
+    <link rel="shortcut icon" href="asset/img/logomi.png">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .inputContainer {
+  height: 60px;
+  border-top: 1px solid #e5e5e5;
+  position: relative;
+  overflow: hidden;
+}
+
+.inputContainer.last {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.inputContainer.half.last.right { border-left: 1px solid #efefef; }
+.taskAdd {
+  background: #444;
+  padding-left: 15px;
+}
+
+.taskAdd:hover { background: #303030; }
+
+.taskDelete {
+  background: #e74c3c;
+  padding-left: 30px;
+}
+
+.taskDelete:hover { background: #c0392b; }
+
+/* task styles */
+
+.taskList {
+  list-style: none;
+  padding: 0 20px;
+}
+
+.taskItem {
+  border-top: 1px solid #e5e5e5;
+  padding: 15px 0;
+  color: #777;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.taskList .taskItem:nth-child(even) { background: #fcfcfc; }
+
+.taskCheckbox { margin-right: 1em; }
+
+.complete-true {
+  text-decoration: line-through;
+  color: #bebebe;
+}
+
+.taskList .taskDate {
+  color: #95a5a6;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  margin-left: 41px;
+}
+[class*='category-'] {
+ display: inline-block;
+ font-size: 10px;
+ background: #444;
+ vertical-align: middle;
+ color: #fff;
+ padding: 10px;
+ width: 75px;
+ text-align: center;
+ border-radius: 2px;
+ float: right;
+ font-weight: normal;
+ text-transform: uppercase;
+ margin-right: 20px;
+}
+
+.category- { background: transparent; }
+
+.category-Personal { background: #2980b9; }
+
+.category-Work { background: #8e44ad; }
+
+.category-School { background: #f39c12; }
+
+.category-Cleaning { background: #16a085; }
+
+.category-Other { background: #d35400; }
+/* custom checkboxes */
+
+.taskCheckbox {
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+  cursor: pointer;
+  width: 19px;
+  height: 19px;
+  vertical-align: middle;
+}
+
+.taskCheckbox:focus { outline: none; }
+
+.taskCheckbox:before,
+.taskCheckbox:checked:before {
+  font-family: 'FontAwesome';
+  color: #444;
+  font-size: 20px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.taskCheckbox:before { content: '\f096'; }
+
+.taskCheckbox:checked:before {
+  content: '\f14a';
+  color: #16a085;
+}
+
+/* custom select menu */
+
+.taskCategory {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-left: 16.5px; /*specific positioning due to difficult behavior of select element*/
+  background: #fff;
+}
+
+.selectArrow {
+  position: absolute;
+  z-index: 10;
+  top: 35%;
+  right: 0;
+  margin-right: 20px;
+  color: #777;
+  pointer-events: none;
+}
+
+.taskCategory option {
+  background: #fff;
+  border: none;
+  outline: none;
+  padding: 0 100px;
+}
+    </style>
+</head>
+
+<body id="mimin" class="dashboard">
+    <!-- start: Header -->
+    <nav class="navbar navbar-default header navbar-fixed-top">
+        <div class="col-md-12 nav-wrapper">
+            <div class="navbar-header" style="width:100%;">
+                <div class="opener-left-menu is-open">
+                    <span class="top"></span>
+                    <span class="middle"></span>
+                    <span class="bottom"></span>
+                </div>
+                <a href="index.html" class="navbar-brand">
+                    <b>ADMIN</b>
+                </a>
+                <ul class="nav navbar-nav search-nav">
+                    <li>
+                        <div class="search">
+                            <span class="fa fa-search icon-search" style="font-size:23px;"></span>
+                            <div class="form-group form-animate-text">
+                                <input type="text" class="form-text" required>
+                                <span class="bar"></span>
+                                <label class="label-search">Type here to <b>Search</b> </label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right user-nav">
+                    <li class="user-name"><span>Adhikari Srinivas</span></li>
+                    <li class="dropdown avatar-dropdown">
+                        <img src="asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+                        <ul class="dropdown-menu user-dropdown">
+                            <li><a href="#"><span class="fa fa-user"></span> My Profile</a></li>
+                            <li><a href="#"><span class="fa fa-calendar"></span> My Calendar</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="more">
+                                <ul>
+                                    <li><a href=""><span class="fa fa-cogs"></span></a></li>
+                                    <li><a href=""><span class="fa fa-lock"></span></a></li>
+                                    <li><a href=""><span class="fa fa-power-off "></span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="opener-right-menu"><span class="fa fa-coffee"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end: Header -->
+    <div class="container-fluid mimin-wrapper">
+        <!-- start:Left Menu -->
+        <div id="left-menu">
+            <div class="sub-left-menu scroll">
+                <ul class="nav nav-list">
+                    <li class="time">
+                        <h1 class="animated fadeInLeft">21:00</h1>
+                        <p class="animated fadeInRight">Sat,October 1st 2029</p>
+                    </li>
+                    <li class="ripple"><a href="calendar.html"><span class="fa fa-user"></span>Tenants</a></li>
+                    <li class="ripple"><a href="calendar.html"><span class="fa fa-calendar"></span>Entities</a></li>
+                    <li class="ripple"><a href="calendar.html"><span class="fa fa-calendar-o"></span>Lists</a></li>
+                    <li class="ripple"><a href="calendar.html"><span class="fa fa-calendar-o"></span>Validations</a></li>
+                    <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-envelope-o"></span> others <span class="fa-angle-right fa right-arrow text-right"></span> </a>
+                        <ul class="nav nav-list tree">
+                            <li><a href="mail-box.html">op1</a></li>
+                            <li><a href="compose-mail.html">op2</a></li>
+                            <li><a href="view-mail.html">op3</a></li>
+                        </ul>
+                    </li>
+                    <li class="ripple"><a class="tree-toggle nav-header"><span class="fa "></span> MultiLevel  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
+                        <ul class="nav nav-list tree">
+                            <li><a href="view-mail.html">Level 1</a></li>
+                            <li><a href="view-mail.html">Level 1</a></li>
+                            <li class="ripple">
+                                <a class="sub-tree-toggle nav-header">
+                                    <span class="fa fa-envelope-o"></span> Level 1
+                                    <span class="fa-angle-right fa right-arrow text-right"></span>
+                                </a>
+                                <ul class="nav nav-list sub-tree">
+                                    <li><a href="mail-box.html">Level 2</a></li>
+                                    <li><a href="compose-mail.html">Level 2</a></li>
+                                    <li><a href="view-mail.html">Level 2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end: Left Menu -->
+        <!-- start: content -->
+        <div id="content">
+            <div class="col-md-12" style="padding:20px;">
+                <div class="col-md-12 padding-0">
+                    <div class="col-md-8 padding-0">
+                        <div class="col-md-12">
+                            <div class="panel box-v4">
+                                <div class="panel-heading bg-white border-none">
+                                    <h4><span class="icon-notebook icons"></span> Create Entities</h4>
+                                </div>
+                                <div class="panel-body padding-0">
+                                    <!--entity creation-->
+                                    <div ng-app="TaskManager" style="margin-top:150px;">
+                                        <div class="container">
+                                            <div class="content" ng-controller="taskController">
+                                                <form>
+                                                    <div class="inputContainer">
+                                                        <input type="text" id="description" class="taskName" placeholder="What do you need to do?" ng-model="newTask">
+                                                        <label for="description">Description</label>
+                                                    </div>
+                                                    <div class="inputContainer half last"> <i class="fa fa-caret-down selectArrow"></i>
+                                                        <select id="category" class="taskCategory" ng-model="newTaskCategory" ng-options="obj.name for obj in categories">
+                                                            <option class="disabled" value="">Choose a tag</option>
+                                                        </select>
+                                                        <label for="category">Tags</label>
+                                                    </div>
+                                                  <!--   <div class="inputContainer half last right">
+                                                        <input type="date" id="dueDate" class="taskDate" ng-model="newTaskDate">
+                                                        <label for="dueDate">Due Date</label>
+                                                    </div> -->
+                                                    <div class="row">
+                                                        <button class="taskAdd" ng-click="addNew()"><i class="fa fa-plus icon"></i>Add entity</button>
+                                                        <button class="taskDelete" ng-click="deleteTask()"><i class="fa fa-trash-o icon"></i>Delete entity</button>
+                                                    </div>
+                                                </form>
+                                                <ul class="taskList">
+                                                    <li class="taskItem" ng-repeat="taskItem in taskItem track by $index" ng-model="taskItem">
+                                                        <input type="checkbox" class="taskCheckbox" ng-model="taskItem.complete" ng-change="save()">
+                                                        <span class="complete-{{taskItem.complete}}">{{taskItem.description}}</span> <span class="category-{{taskItem.category}}">{{taskItem.category}}</span> <strong class="taskDate complete-{{taskItem.complete}}">
+                                                </ul>
+                                                <!-- taskList -->
+                                            </div>
+                                            <!-- content -->
+                                        </div>
+                                        <!-- container -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: content -->
+            <!-- start: right menu -->
+            <div id="right-menu">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#right-menu-user">
+                            <span class="fa fa-comment-o fa-2x"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#right-menu-notif">
+                            <span class="fa fa-bell-o fa-2x"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#right-menu-config">
+                            <span class="fa fa-cog fa-2x"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="right-menu-user" class="tab-pane fade in active">
+                        <div class="search col-md-12">
+                            <input type="text" placeholder="search.." />
+                        </div>
+                        <div class="user col-md-12">
+                            <ul class="nav nav-list">
+                                <li class="online">
+                                    <img src="asset/img/avatar.jpg" alt="user name">
+                                    <div class="name">
+                                        <h5><b>Bill Gates</b></h5>
+                                        <p>Hi there.?</p>
+                                    </div>
+                                    <div class="gadget">
+                                        <span class="fa  fa-mobile-phone fa-2x"></span>
+                                    </div>
+                                    <div class="dot"></div>
+                                </li>
+                                <li class="away">
+                                    <img src="asset/img/avatar.jpg" alt="user name">
+                                    <div class="name">
+                                        <h5><b>Bill Gates</b></h5>
+                                        <p>Hi there.?</p>
+                                    </div>
+                                    <div class="gadget">
+                                        <span class="fa  fa-desktop"></span>
+                                    </div>
+                                    <div class="dot"></div>
+                                </li>
+                                <li class="online">
+                                    <img src="asset/img/avatar.jpg" alt="user name">
+                                    <div class="name">
+                                        <h5><b>Bill Gates</b></h5>
+                                        <p>Hi there.?</p>
+                                    </div>
+                                    <div class="gadget">
+                                        <span class="fa  fa-mobile-phone fa-2x"></span>
+                                    </div>
+                                    <div class="dot"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Chatbox -->
+                        <div class="col-md-12 chatbox">
+                            <div class="col-md-12">
+                                <a href="#" class="close-chat">X</a>
+                                <h4>Adhikari Srinivasa</h4>
+                            </div>
+                            <div class="chat-area">
+                                <div class="chat-area-content">
+                                    <div class="msg_container_base">
+                                        <div class="row msg_container send">
+                                            <div class="col-md-9 col-xs-9 bubble">
+                                                <div class="messages msg_sent">
+                                                    <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-xs-3 avatar">
+                                                <img src="asset/img/avatar.jpg" class=" img-responsive " alt="user name">
+                                            </div>
+                                        </div>
+                                        <div class="row msg_container receive">
+                                            <div class="col-md-3 col-xs-3 avatar">
+                                                <img src="asset/img/avatar.jpg" class=" img-responsive " alt="user name">
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 bubble">
+                                                <div class="messages msg_receive">
+                                                    <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row msg_container send">
+                                            <div class="col-md-9 col-xs-9 bubble">
+                                                <div class="messages msg_sent">
+                                                    <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-xs-3 avatar">
+                                                <img src="asset/img/avatar.jpg" class=" img-responsive " alt="user name">
+                                            </div>
+                                        </div>
+                                        <div class="row msg_container receive">
+                                            <div class="col-md-3 col-xs-3 avatar">
+                                                <img src="asset/img/avatar.jpg" class=" img-responsive " alt="user name">
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 bubble">
+                                                <div class="messages msg_receive">
+                                                    <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row msg_container send">
+                                            <div class="col-md-9 col-xs-9 bubble">
+                                                <div class="messages msg_sent">
+                                                    <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-xs-3 avatar">
+                                                <img src="asset/img/avatar.jpg" class=" img-responsive " alt="user name">
+                                            </div>
+                                        </div>
+                                        <div class="row msg_container receive">
+                                            <div class="col-md-3 col-xs-3 avatar">
+                                                <img src="asset/img/avatar.jpg" class=" img-responsive " alt="user name">
+                                            </div>
+                                            <div class="col-md-9 col-xs-9 bubble">
+                                                <div class="messages msg_receive">
+                                                    <p>that mongodb thing looks good, huh? tiny master db, and huge document store</p>
+                                                    <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <textarea placeholder="type your message here.."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right-menu-notif" class="tab-pane fade">
+                        <ul class="mini-timeline">
+                            <li class="mini-timeline-highlight">
+                                <div class="mini-timeline-panel">
+                                    <h5 class="time">07:00</h5>
+                                    <p>Coding!!</p>
+                                </div>
+                            </li>
+                            <li class="mini-timeline-highlight">
+                                <div class="mini-timeline-panel">
+                                    <h5 class="time">09:00</h5>
+                                    <p>Playing The Games</p>
+                                </div>
+                            </li>
+                            <li class="mini-timeline-highlight">
+                                <div class="mini-timeline-panel">
+                                    <h5 class="time">12:00</h5>
+                                    <p>Meeting with <a href="#">Clients</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="right-menu-config" class="tab-pane fade">
+                        <div class="col-md-12">
+                            <div class="col-md-6 padding-0">
+                                <h5>Notification</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mini-onoffswitch onoffswitch-info">
+                                    <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch1" checked>
+                                    <label class="onoffswitch-label" for="myonoffswitch1"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6 padding-0">
+                                <h5>Custom Designer</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mini-onoffswitch onoffswitch-danger">
+                                    <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+                                    <label class="onoffswitch-label" for="myonoffswitch2"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6 padding-0">
+                                <h5>Autologin</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mini-onoffswitch onoffswitch-success">
+                                    <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch3" checked>
+                                    <label class="onoffswitch-label" for="myonoffswitch3"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6 padding-0">
+                                <h5>Auto locking</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mini-onoffswitch">
+                                    <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch5" checked>
+                                    <label class="onoffswitch-label" for="myonoffswitch5"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6 padding-0">
+                                <h5>FireWall</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mini-onoffswitch">
+                                    <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch6" checked>
+                                    <label class="onoffswitch-label" for="myonoffswitch6"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="button" value="More.." class="btnmore">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: right menu -->
+        </div>
+        <!-- start: Mobile -->
+        <!--       <div id="mimin-mobile" class="reverse">
+        <div class="mimin-mobile-menu-list">
+            <div class="col-md-12 sub-mimin-mobile-menu-list animated fadeInLeft">
+                <ul class="nav nav-list">
+                    <li class="active ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa-home fa"></span>Dashboard
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                          <li><a href="dashboard-v1.html">Dashboard v.1</a></li>
+                          <li><a href="dashboard-v2.html">Dashboard v.2</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa-diamond fa"></span>Layout
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="topnav.html">Top Navigation</a></li>
+                        <li><a href="boxed.html">Boxed</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa-area-chart fa"></span>Charts
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="chartjs.html">ChartJs</a></li>
+                        <li><a href="morris.html">Morris</a></li>
+                        <li><a href="flot.html">Flot</a></li>
+                        <li><a href="sparkline.html">SparkLine</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-pencil-square"></span>Ui Elements
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="color.html">Color</a></li>
+                        <li><a href="weather.html">Weather</a></li>
+                        <li><a href="typography.html">Typography</a></li>
+                        <li><a href="icons.html">Icons</a></li>
+                        <li><a href="buttons.html">Buttons</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="panels.html">Panels & Tabs</a></li>
+                        <li><a href="notifications.html">Notifications & Tooltip</a></li>
+                        <li><a href="badges.html">Badges & Label</a></li>
+                        <li><a href="progress.html">Progress</a></li>
+                        <li><a href="sliders.html">Sliders</a></li>
+                        <li><a href="timeline.html">Timeline</a></li>
+                        <li><a href="modal.html">Modals</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                       <span class="fa fa-check-square-o"></span>Forms
+                       <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="formelement.html">Form Element</a></li>
+                        <li><a href="#">Wizard</a></li>
+                        <li><a href="#">File Upload</a></li>
+                        <li><a href="#">Text Editor</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-table"></span>Tables
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="datatables.html">Data Tables</a></li>
+                        <li><a href="handsontable.html">handsontable</a></li>
+                        <li><a href="tablestatic.html">Static</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a href="calendar.html">
+                         <span class="fa fa-calendar-o"></span>Calendar
+                      </a>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-envelope-o"></span>Mail
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="mail-box.html">Inbox</a></li>
+                        <li><a href="compose-mail.html">Compose Mail</a></li>
+                        <li><a href="view-mail.html">View Mail</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa fa-file-code-o"></span>Pages
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="forgotpass.html">Forgot Password</a></li>
+                        <li><a href="login.html">SignIn</a></li>
+                        <li><a href="reg.html">SignUp</a></li>
+                        <li><a href="article-v1.html">Article v1</a></li>
+                        <li><a href="search-v1.html">Search Result v1</a></li>
+                        <li><a href="productgrid.html">Product Grid</a></li>
+                        <li><a href="profile-v1.html">Profile v1</a></li>
+                        <li><a href="invoice-v1.html">Invoice v1</a></li>
+                      </ul>
+                    </li>
+                     <li class="ripple"><a class="tree-toggle nav-header"><span class="fa "></span> MultiLevel  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
+                      <ul class="nav nav-list tree">
+                        <li><a href="view-mail.html">Level 1</a></li>
+                        <li><a href="view-mail.html">Level 1</a></li>
+                        <li class="ripple">
+                          <a class="sub-tree-toggle nav-header">
+                            <span class="fa fa-envelope-o"></span> Level 1
+                            <span class="fa-angle-right fa right-arrow text-right"></span>
+                          </a>
+                          <ul class="nav nav-list sub-tree">
+                            <li><a href="mail-box.html">Level 2</a></li>
+                            <li><a href="compose-mail.html">Level 2</a></li>
+                            <li><a href="view-mail.html">Level 2</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="credits.html">Credits</a></li>
+                  </ul>
+            </div>
+        </div>
+      </div> -->
+        <button id="mimin-mobile-menu-opener" class="animated rubberBand btn btn-circle btn-danger">
+            <span class="fa fa-bars"></span>
+        </button>
+        <!-- end: Mobile -->
+        <!-- start: Javascript -->
+        <script src="asset/js/jquery.min.js"></script>
+        <script src="asset/js/jquery.ui.min.js"></script>
+        <script src="asset/js/bootstrap.min.js"></script>
+        <!-- plugins -->
+        <script src="asset/js/plugins/moment.min.js"></script>
+        <script src="asset/js/plugins/fullcalendar.min.js"></script>
+        <script src="asset/js/plugins/jquery.nicescroll.js"></script>
+        <script src="asset/js/plugins/jquery.vmap.min.js"></script>
+        <script src="asset/js/plugins/maps/jquery.vmap.world.js"></script>
+        <script src="asset/js/plugins/jquery.vmap.sampledata.js"></script>
+        <script src="asset/js/plugins/chart.min.js"></script>
+        <!-- custom -->
+        <script src="asset/js/main.js"></script>
+        <script type="text/javascript">
+        </script>
+        <!-- end: Javascript -->
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js'></script>
+<script>
+//Define angular app
+var app = angular.module('TaskManager', []); 
+
+//controllers
+app.controller('taskController', function($scope) {
+    $scope.today = new Date();
+    $scope.saved = localStorage.getItem('taskItems');
+    $scope.taskItem = (localStorage.getItem('taskItems')!==null) ? 
+    JSON.parse($scope.saved) : [ {description: "Why not add a task?", date: $scope.today, complete: false}];
+    localStorage.setItem('taskItems', JSON.stringify($scope.taskItem));
+    
+    $scope.newTask = null;
+    $scope.newTaskDate = null;
+    $scope.categories = [
+        {name: 'Personal'},
+        {name: 'Work'},
+        {name: 'School'},
+        {name: 'Cleaning'},
+        {name: 'Other'}
+    ];
+    $scope.newTaskCategory = $scope.categories;
+    $scope.addNew = function () {
+        if ($scope.newTaskDate == null || $scope.newTaskDate == '') {
+            $scope.taskItem.push({
+                description: $scope.newTask,
+                date: "No deadline",
+                complete: false,
+                category: $scope.newTaskCategory.name
+            }) 
+        } else {
+            $scope.taskItem.push({
+                description: $scope.newTask,
+                date: $scope.newTaskDate,
+                complete: false,
+                category: $scope.newTaskCategory.name
+            })
+        };
+        $scope.newTask = '';
+        $scope.newTaskDate = '';
+        $scope.newTaskCategory = $scope.categories;
+        localStorage.setItem('taskItems', JSON.stringify($scope.taskItem));
+    };
+    $scope.deleteTask = function () {
+        var completedTask = $scope.taskItem;
+        $scope.taskItem = [];
+        angular.forEach(completedTask, function (taskItem) {
+            if (!taskItem.complete) {
+                $scope.taskItem.push(taskItem);
+            }
+        });
+        localStorage.setItem('taskItems', JSON.stringify($scope.taskItem));
+    };
+    
+    $scope.save = function () {
+        localStorage.setItem('taskItems', JSON.stringify($scope.taskItem));
+    }
+});
+</script>
+</body>
+
+</html>
