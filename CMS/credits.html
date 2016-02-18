@@ -15,7 +15,10 @@
   <!-- plugins -->
   <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css"/>
   <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css"/>
+  <link rel="stylesheet" type="text/css" href="asset/css/plugins/select2.min.css"/>
   <link href="asset/css/style.css" rel="stylesheet">
+  <link href="asset/css/wizard.css" rel="stylesheet">
+
   <!-- end: Css -->
 
   <link rel="shortcut icon" href="asset/img/logomi.png">
@@ -26,7 +29,7 @@
     <![endif]-->
   </head>
 
-  <body id="mimin" class="dashboard">
+  <body id="mimin" class="dashboard" ng-app="my-app">
     <!-- start: Header -->
         <nav class="navbar navbar-default header navbar-fixed-top">
           <div class="col-md-12 nav-wrapper">
@@ -36,7 +39,7 @@
                 <span class="middle"></span>
                 <span class="bottom"></span>
               </div>
-                <a href="index.html" class="navbar-brand"> 
+                <a href="index.html" class="navbar-brand">
                  <b>MIMIN</b>
                 </a>
 
@@ -80,203 +83,160 @@
       <div class="container-fluid mimin-wrapper">
 
         <!-- start:Left Menu -->
-        <div id="left-menu">
-          <div class="sub-left-menu scroll">
-            <ul class="nav nav-list">
-              <li><div class="left-bg"></div></li>
-              <li class="time">
-                <h1 class="animated fadeInLeft">21:00</h1>
-                <p class="animated fadeInRight">Sat,October 1st 2029</p>
-              </li>
-              <li class="active ripple">
-                <a class="tree-toggle nav-header"><span class="fa-home fa"></span> Dashboard 
-                  <span class="fa-angle-right fa right-arrow text-right"></span>
-                </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="dashboard-v1.html">Dashboard v.1</a></li>
-                  <li><a href="dashboard-v2.html">Dashboard v.2</a></li>
-                </ul>
-              </li>
-              <li class="ripple">
-                <a class="tree-toggle nav-header">
-                  <span class="fa-diamond fa"></span> Layout
-                  <span class="fa-angle-right fa right-arrow text-right"></span>
-                </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="topnav.html">Top Navigation</a></li>
-                  <li><a href="boxed.html">Boxed</a></li>
-                </ul>
-              </li>
-              <li class="ripple">
-                <a class="tree-toggle nav-header">
-                  <span class="fa-area-chart fa"></span> Charts
-                  <span class="fa-angle-right fa right-arrow text-right"></span>
-                </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="chartjs.html">ChartJs</a></li>
-                  <li><a href="morris.html">Morris</a></li>
-                  <li><a href="flot.html">Flot</a></li>
-                  <li><a href="sparkline.html">SparkLine</a></li>
-                </ul>
-              </li>
-              <li class="ripple"><a class="tree-toggle nav-header">
-                <span class="fa fa-pencil-square"></span> Ui Elements  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="color.html">Color</a></li>
-                  <li><a href="weather.html">Weather</a></li>
-                  <li><a href="typography.html">Typography</a></li>
-                  <li><a href="icons.html">Icons</a></li>
-                  <li><a href="buttons.html">Buttons</a></li>
-                  <li><a href="media.html">Media</a></li>
-                  <li><a href="panels.html">Panels & Tabs</a></li>
-                  <li><a href="notifications.html">Notifications & Tooltip</a></li>
-                  <li><a href="badges.html">Badges & Label</a></li>
-                  <li><a href="progress.html">Progress</a></li>
-                  <li><a href="sliders.html">Sliders</a></li>
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="modal.html">Modals</a></li>
-                </ul>
-              </li>
-              <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-check-square-o"></span> Forms  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="formelement.html">Form Element</a></li>
-                  <li><a href="#">Wizard</a></li>
-                  <li><a href="#">File Upload</a></li>
-                  <li><a href="#">Text Editor</a></li>
-                </ul>
-              </li>
-              <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-table"></span> Tables  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="datatables.html">Data Tables</a></li>
-                  <li><a href="handsontable.html">handsontable</a></li>
-                  <li><a href="tablestatic.html">Static</a></li>
-                </ul>
-              </li>
-              <li class="ripple"><a href="calendar.html"><span class="fa fa-calendar-o"></span>Calendar</a></li>
-              <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-envelope-o"></span> Mail <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="mail-box.html">Inbox</a></li>
-                  <li><a href="compose-mail.html">Compose Mail</a></li>
-                  <li><a href="view-mail.html">View Mail</a></li>
-                </ul>
-              </li>
-              <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-file-code-o"></span> Pages  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                <ul class="nav nav-list tree">
-                  <li><a href="forgotpass.html">Forgot Password</a></li>
-                  <li><a href="login.html">SignIn</a></li>
-                  <li><a href="reg.html">SignUp</a></li>
-                  <li><a href="article-v1.html">Article v1</a></li>
-                  <li><a href="search-v1.html">Search Result v1</a></li>
-                  <li><a href="productgrid.html">Product Grid</a></li>
-                  <li><a href="profile-v1.html">Profile v1</a></li>
-                  <li><a href="invoice-v1.html">Invoice v1</a></li>
-                </ul>
-              </li>
-               <li class="ripple"><a class="tree-toggle nav-header"><span class="fa "></span> MultiLevel  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                      <ul class="nav nav-list tree">
-                        <li><a href="view-mail.html">Level 1</a></li>
-                        <li><a href="view-mail.html">Level 1</a></li>
-                        <li class="ripple">
-                          <a class="sub-tree-toggle nav-header">
-                            <span class="fa fa-envelope-o"></span> Level 1
-                            <span class="fa-angle-right fa right-arrow text-right"></span>
-                          </a>
-                          <ul class="nav nav-list sub-tree">
-                            <li><a href="mail-box.html">Level 2</a></li>
-                            <li><a href="compose-mail.html">Level 2</a></li>
-                            <li><a href="view-mail.html">Level 2</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                <li><a href="credits.html">Credits</a></li>
-            </ul>
-          </div>
-        </div>
         <!-- end: Left Menu -->
-
-
         <!-- start: Content -->
-        <div id="content" class="article-v1">
-            <div class="panel box-shadow-none content-header">
-                <div class="panel-body">
-                  <div class="col-md-12">
-                      <h3 class="animated fadeInLeft">Credits</h3>
-                      <p class="animated fadeInDown">
-                        Home <span class="fa-angle-right fa"></span> Credits
-                      </p>
-                  </div>
-                </div>
-            </div>
+        <div id="content-2" class="article-v1" ng-controller="loginPage">
+
             <div class="col-md-12">
               <div class="panel">
-                <div class="pull-right article-v1-time">
-                  <em> Miminium Admin V.1.0</em></div>
                   <div class="panel-body">
-                    <div class="col-md-12 text-left article-v1-title"><h2>Thanks To</h2></div>
+                    <div class="col-md-12 text-left article-v1-title"><h2>Tenant Setup</h2></div>
                     <div class="col-md-12  article-v1-body">
-                      <ul style="font-size:1.7em;listy">
-                        <li>Common:</li>
-                        <li>1. <a href="https://jquery.com/">Jquery</a></li>
-                        <li>2. <a href="https://jquerymobile.com/">Jquery Mobile</a></li>
-                        <li>3. <a href="https://jqueryui.com/">Jquery Ui</a></li>
-                        <li>5. <a href="getbootstrap.com">Bootstrap</a></li>
-                        <li>6. <a href="bootsnipp.com">Bootsnip</a></li>
+                      <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+	<tr>
 
-                        <li>&nbsp</li>
+		<th>Tenant Name
+		</th>
+		<th>Type
+		</th>
+		<th>Status
+		</th>
+		<th>Expiry date
+		</th>
+		<th>creation date
+		</th>
+		<th>Sales owner
+		</th>
+		<th>Actions
+		</th>
+	</tr>
+	<tr ng-repeat="tenant in tenants">
+		<td>{{tenant.name}}
+		</td>
+		<td>{{tenant.type}}
+		</td>
+		<td>{{tenant.status}}
+		</td>
+		<td>{{tenant.expiryDate}}
+		</td>
+		<td>{{tenant.creationDate}}
+		</td>
+		<td>{{tenant.salesOwner}}
+		</td>
+		<td>
+		</td>
 
-                        <li>Image:</li>
-                        <li>1. <a href="https://unsplash.com/">Unsplash</a></li>
-
-                        <li>&nbsp</li>
-
-                        <li>Fonts:</li>
-                        <li>1. <a href="https://fortawesome.github.io/Font-Awesome/">Font Awesome</a></li>
-                        <li>2. <a href="http://thesabbir.github.io/simple-line-icons/">Simple Line Icons</a></li>
-
-                        <li>&nbsp</li>
-
-                        <li>CSS:</li>
-                        <li>1. <a href="https://daneden.github.io/animate.css/">Animate.css</a></li>
-
-                        <li>&nbsp</li>
-
-                        <li>Javascript Plugin:</li>
-                        <li>1. <a href="http://t00rk.github.io/bootstrap-material-datetimepicker/">Bootstrap Material Datetimepicker</a></li>
-                        <li>2. <a href="www.chartjs.org">Chart Js</a></li>
-                        <li>3. <a href="https://zenorocha.github.io/clipboard.js/">ClipBoard Js</a></li>
-                        <li>4. <a href="https://codemirror.net/">CodeMirror</a></li>
-                        <li>5. <a href="https://www.datatables.net/">Datatables</a></li>
-                        <li>6. <a href="www.dropzonejs.com/">Dropzone Js</a></li>
-                        <li>7. <a href="http://handsontable.com/">HansonTable</a></li>
-                        <li>8. <a href="fullcalendar.io">Fullcalendar</a></li>
-                        <li>9. <a href="imsky.github.io/holder/">Holder Js</a></li>
-                        <li>10. <a href="http://www.paulirish.com/2011/the-history-of-the-html5-shiv/">HTML5shiv</a></li>
-                        <li>11. <a href="fronteed.com/iCheck/">Icheck</a></li>
-                        <li>12. <a href="http://code.google.com/p/ie7-js/">Ie9 Js</a></li>
-                        <li>13. <a href="summernote.org">Summernote</a></li>
-                        <li>14. <a href="imagesloaded.desandro.com/">imagesLoaded</a></li>
-                        <li>15. <a href="ionden.com/a/plugins/ion.rangeSlider/en.html">Ion Range Slider</a></li>
-                        <li>16. <a href="www.flotcharts.org/">Flot</a></li>
-                        <li>17. <a href="anthonyterrien.com/knob">Jquey Knob</a></li>
-                        <li>18. <a href="https://igorescobar.github.io/jQuery-Mask-Plugin/">Jquery Mask</a></li>
-                        <li>19. <a href="https://github.com/inuyaksa/jquery.nicescroll">Jquery NiceScroll</a></li>
-                        <li>20. <a href="omnipotent.net/jquery.sparkline">Jquery Sparkline</a></li>
-                        <li>21. <a href="www.jquery-steps.com/">Jquery Steps</a></li>
-                        <li>22. <a href="jqueryvalidation.org">Jquery Validate</a></li>
-                        <li>23. <a href="jqvmap.com/">jQVMap</a></li>
-                        <li>24. <a href="masonry.desandro.com/">Mansonry</a></li>
-                        <li>25. <a href="mediaelementjs.com/">MediaElement.js</a></li>
-                        <li>26. <a href="momentjs.com/">Moment Js</a></li>
-                        <li>27. <a href="morrisjs.github.io/morris.js">Morris</a></li>
-                        <li>28. <a href="refreshless.com/nouislider/">Nouislider</a></li>
-                        <li>29. <a href="raphaeljs.com/">Raphael</a></li>
-                        <li>30. <a href="https://github.com/scottjehl/Respond">Respond Js</a></li>
-                        <li>31. <a href="https://select2.github.io/">Select2</a></li>
-                      </ul>
+	</tr>
+</table>
+  <input type="button" class="btn btn-success pull-right" ng-click="addRow();" value="Add New"/>
                     </div>
+
                   </div>
              </div>
+             </div>
+             <div class="col-md-12">
+                 <div class="panel box-v4">
+                     <div class="panel-heading bg-white border-none">
+                       <h4><span class="icon-notebook icons"></span> Agenda</h4>
+                     </div>
+                     <div class="panel-body padding-0">
+                         <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
+                           <div id="example-vertical">
+    <h3>Tenant Registration</h3>
+    <section>
+      <div class="form-group form-animate-text" style="margin-top:40px !important;">
+        <input type="text" class="form-text" required>
+        <span class="bar"></span>
+        <label>Name</label>
+      </div>
+      <div class="form-group">
+      <select class="select2-A">
+        <option value="Eval">Eval</option>
+        <option value="Demo">Demo</option>
+        <option value="Draft">Draft</option>
+      </select>
+    </div>
+      <div class="form-group form-animate-text" style="margin-top:40px !important;">
+        <input type="text" class="form-text" required>
+        <span class="bar"></span>
+        <label>Organisation Name</label>
+      </div>
+      <div class="form-group form-animate-text" style="margin-top:40px !important;">
+        <input type="text" class="form-text" required>
+        <span class="bar"></span>
+        <label>Department</label>
+      </div>
+      <div class="form-group form-animate-text" style="margin-top:40px !important;">
+        <input type="text" class="form-text" required>
+        <span class="bar"></span>
+        <label>Organisation TAN</label>
+      </div>
+    </section>
+    <h3>Organization Details</h3>
+    <section>
+      <div class="form-group form-animate-text" style="margin-top:40px !important;">
+        <input type="text" class="form-text" required>
+        <span class="bar"></span>
+        <label>Address Line 1</label>
+      </div>
+      <div class="form-group form-animate-text" style="margin-top:40px !important;">
+        <input type="text" class="form-text" required>
+        <span class="bar"></span>
+        <label>Address Line 2</label>
+      </div>
+      <div class="form-group">
+      <select class="select2-A">
+        <option value="Eval">Eval</option>
+        <option value="Demo">Demo</option>
+        <option value="Draft">Draft</option>
+      </select>
+    </div>
+    <div class="form-group">
+    <select class="select2-A">
+      <option value="Eval">Eval</option>
+      <option value="Demo">Demo</option>
+      <option value="Draft">Draft</option>
+    </select>
+  </div>
+  <div class="form-group form-animate-text" style="margin-top:40px !important;">
+    <input type="text" class="form-text" required>
+    <span class="bar"></span>
+    <label>Zip Code</label>
+  </div>
+  <div class="form-group form-animate-text" style="margin-top:40px !important;">
+    <input type="email" class="form-text" >
+    <span class="bar"></span>
+    <label>Email</label>
+  </div>
+  <div class="form-group form-animate-text" style="margin-top:40px !important;">
+    <input type="text" class="form-text" >
+    <span class="bar"></span>
+    <label>Phone</label>
+  </div>
+  <div class="form-group form-animate-text" style="margin-top:40px !important;">
+    <input type="text" class="form-text" required>
+    <span class="bar"></span>
+    <label>Fax</label>
+  </div>
+    </section>
+    <h3>Commercial Contact</h3>
+    <section>
+
+    </section>
+    <h3>Process Context</h3>
+    <section>
+
+    </section>
+</div>
+
+
+
+
+
+                         </div>
+
+                     </div>
+                 </div>
              </div>
             </div>
         </div>
@@ -317,7 +277,7 @@
                         <p>Hi there.?</p>
                       </div>
                       <div class="gadget">
-                        <span class="fa  fa-mobile-phone fa-2x"></span> 
+                        <span class="fa  fa-mobile-phone fa-2x"></span>
                       </div>
                       <div class="dot"></div>
                     </li>
@@ -328,7 +288,7 @@
                         <p>Hi there.?</p>
                       </div>
                       <div class="gadget">
-                        <span class="fa  fa-desktop"></span> 
+                        <span class="fa  fa-desktop"></span>
                       </div>
                       <div class="dot"></div>
                     </li>
@@ -355,7 +315,7 @@
                         <p>Hi there.?</p>
                       </div>
                       <div class="gadget">
-                        <span class="fa  fa-mobile-phone fa-2x"></span> 
+                        <span class="fa  fa-mobile-phone fa-2x"></span>
                       </div>
                       <div class="dot"></div>
                     </li>
@@ -374,7 +334,7 @@
                         <p>Hi there.?</p>
                       </div>
                       <div class="gadget">
-                        <span class="fa  fa-mobile-phone fa-2x"></span> 
+                        <span class="fa  fa-mobile-phone fa-2x"></span>
                       </div>
                       <div class="dot"></div>
                     </li>
@@ -401,7 +361,7 @@
                         <p>Hi there.?</p>
                       </div>
                       <div class="gadget">
-                        <span class="fa  fa-mobile-phone fa-2x"></span> 
+                        <span class="fa  fa-mobile-phone fa-2x"></span>
                       </div>
                       <div class="dot"></div>
                     </li>
@@ -412,7 +372,7 @@
                         <p>Hi there.?</p>
                       </div>
                       <div class="gadget">
-                        <span class="fa  fa-mobile-phone fa-2x"></span> 
+                        <span class="fa  fa-mobile-phone fa-2x"></span>
                       </div>
                       <div class="dot"></div>
                     </li>
@@ -758,7 +718,7 @@
 
                 </div>
               </div>
-            </div>  
+            </div>
           <!-- end: right menu -->
 
       </div>
@@ -770,7 +730,7 @@
                 <ul class="nav nav-list">
                     <li class="active ripple">
                       <a class="tree-toggle nav-header">
-                        <span class="fa-home fa"></span>Dashboard 
+                        <span class="fa-home fa"></span>Dashboard
                         <span class="fa-angle-right fa right-arrow text-right"></span>
                       </a>
                       <ul class="nav nav-list tree">
@@ -896,7 +856,7 @@
                     <li><a href="credits.html">Credits</a></li>
                   </ul>
             </div>
-        </div>       
+        </div>
       </div>
       <button id="mimin-mobile-menu-opener" class="animated rubberBand btn btn-circle btn-danger">
         <span class="fa fa-bars"></span>
@@ -912,12 +872,35 @@
 
 
 <!-- plugins -->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js'></script>
+<script src="https://code.angularjs.org/1.3.5/angular-animate.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
 <script src="asset/js/plugins/moment.min.js"></script>
 <script src="asset/js/plugins/jquery.nicescroll.js"></script>
 
 
 <!-- custom -->
 <script src="asset/js/main.js"></script>
+<script src="asset/js/ng.js"></script>
+<script src="asset/js/jquery.steps.min.js"></script>
+<script src="asset/js/plugins/select2.full.min.js"></script>
 <!-- end: Javascript -->
+<script>
+$("#example-vertical").steps({
+  headerTag: "h3",
+  bodyTag: "section",
+  transitionEffect: "slideLeft",
+  stepsOrientation: "vertical"
+});
+
+$(".select2-A").select2({
+  placeholder: "Select a state",
+  allowClear: true
+});
+
+$(".select2-B").select2({
+  tags: true
+});
+</script>
 </body>
 </html>
