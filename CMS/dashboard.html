@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Miminium Admin Template v.1">
+    <meta name="author" content="Isna Nur Azis">
+    <meta name="keyword" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CENTRAL ADMIN</title>
+    <!-- start: Css -->
+    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.min.css">
+    <!-- plugins -->
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="asset/css/plugins/dropzone.css" />
+    <!--  <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css"> -->
+    <link href="asset/css/style.css" rel="stylesheet">
+    <link href="asset/css/wizard.css" rel="stylesheet">
+    <link href="asset/css/jquery.treegrid.css" rel="stylesheet">
+    <!-- end: Css -->
+    <link rel="shortcut icon" href="asset/img/logomi.png">
+</head>
+
+<body id="mimin" class="dashboard" ng-app="my-app" id="dashhboard2">
+    <!-- start: Header -->
+    <nav class="navbar navbar-default header navbar-fixed-top">
+        <div class="col-md-12 nav-wrapper">
+            <div class="navbar-header" style="width:100%;">
+                <div class="opener-left-menu is-open">
+                    <span class="top"></span>
+                    <span class="middle"></span>
+                    <span class="bottom"></span>
+                </div>
+                <a href="index.html" class="navbar-brand">
+                    <b>CENTRAL ADMIN</b>
+                </a>
+                <ul class="nav navbar-nav search-nav">
+                    <li>
+                        <div class="search">
+                            <span class="fa fa-search icon-search" style="font-size:23px;"></span>
+                            <div class="form-group form-animate-text">
+                                <input type="text" class="form-text" required>
+                                <span class="bar"></span>
+                                <label class="label-search">Type here to Search</label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right user-nav">
+                    <li class="user-name"><span>sysAdmin</span></li>
+                    <li class="dropdown avatar-dropdown">
+                        <img src="asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+                    </li>
+                    <li><a href="login.html" class="opener-right-menu">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end: Header -->
+    <div class="container-fluid mimin-wrapper">
+        <div id="left-menu">
+              <div class="sub-left-menu scroll">
+                <ul class="nav nav-list">
+                    <li><div class="left-bg"></div></li>
+                    <li class="time">
+                      <h1 class="animated fadeInLeft">21:00</h1>
+                      <p class="animated fadeInRight">Sat,October 1st 2029</p>
+                    </li>
+                    <li class="ripple">
+                        <a class="tree-toggle nav-header" href="global.html">
+                            <span class="fa-diamond fa"></span> Global
+                            <span class="fa-angle-right fa right-arrow text-right"></span>
+                        </a>
+                    </li>
+                    <li class="active ripple">
+                      <a class="tree-toggle nav-header"><span class="fa-home fa"></span>Tenant Manager
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                      <ul class="nav nav-list tree">
+                          <li><a href="index.html">Tenent Setup</a></li>
+                          <li><a href="dashboard.html">Adv Tenant Config</a></li>
+                      </ul>
+                    </li>
+                    <li class="ripple">
+                      <a class="tree-toggle nav-header">
+                        <span class="fa-info fa"></span> Help Guide
+                        <span class="fa-angle-right fa right-arrow text-right"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        <!-- start: Content -->
+        <div id="content-2" class="article-v1" ng-controller="loginPage">
+            <div class="col-md-12" id="">
+                <div class="panel" style="margin-top:30px;">
+                    <div class="panel-heading">
+                        <div class="">
+                            <h4><span class="icon-notebook icons"></span>Advance Tenant Configuration Setup</h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12 col-xs-12 col-md-12 padding-0 box-v4-alert">
+                            <div id="example-vertical2">
+                                <h3>Entity</h3>
+                                <section>
+                                    <!--  <table class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                        <tr>
+                                            <th>Entity Name
+                                            </th>
+                                            <th>Property Name
+                                            </th>
+                                            <th>Property Type
+                                            </th>
+                                            <th>Property Validation
+                                            </th>
+                                            <th>Actions
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="entity in entities">
+                                            <td>{{entity.eName}}
+                                            </td>
+                                            <td>{{entity.pName}}
+                                            </td>
+                                            <td>{{entity.pType}}
+                                            </td>
+                                            <td>{{entity.pValidation}}
+                                            </td>
+                                            <td>
+                                                <a href="dashboard.html" class="fa fa-pencil icon-pencil" style="color:limegreen;font-size:20px"></a> &nbsp;&nbsp;
+                                                <a class="fa fa-file icon-file" style="color:cornflowerblue;font-size:18px"></a>
+                                                &nbsp;&nbsp;
+                                                <a class="fa fa-trash icon-trash" style="color:crimson;font-size:20px"></a>
+                                            </td>
+                                        </tr>
+                                    </table> -->
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable1">
+                                        <tr>
+                                            <th>Entity Name
+                                            </th>
+                                            <th>Entity Type
+                                            </th>
+                                            <th>Entity Validation
+                                            </th>
+                                            <th>Enable/Disable
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>Loan</td>
+                                            <td>Loan Type</td>
+                                            <td>Alphanumeric</td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Property name</th>
+                                            <th>Property type</th>
+                                            <th>Property validation</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>Loan Number</td>
+                                            <td>String</td>
+                                            <td>Alphanumeric</td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable2">
+                                        <tr>
+                                            <th>Entity Name
+                                            </th>
+                                            <th>Entity Type
+                                            </th>
+                                            <th>Entity Validation
+                                            </th>
+                                            <th>Enable/Disable
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>Work Order</td>
+                                            <td>Order Type</td>
+                                            <td>Alphanumeric</td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Property name</th>
+                                            <th>Property type</th>
+                                            <th>Property validation</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>Oder Id</td>
+                                            <td>String</td>
+                                            <td>Alphanumeric</td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                    <!-- <table class="table tree table-bordered table-striped table-condensed" id="dynaTable2"></table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable3"></table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable4"></table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable5"></table> -->
+                                    <div class="col-md-4">
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <input type="text" class="form-text" required id="entityName">
+                                            <span class="bar"></span>
+                                            <label>Entity Name</label>
+                                        </div>
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <select class="" style="width:100%">
+                                                <option>Template</option>
+                                                <option>Document</option>
+                                                <option>Business Object</option>
+                                            </select>
+                                        </div>
+                                        <input type="button" style="margin: 0px 5px;" id="addProperty" class="btn btn-success pull-left" value="Add Property" />
+                                        <input type="button" style="margin: 0px 5px;" id="save" class="btn btn-success pull-left" value="Save" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8" id="prpContainer">
+                                            <table style="margin-top:25px;" class="table table-striped table-bordered" width="100%" cellspacing="0" id="prpTable"></table>
+                                        </div>
+                                    </div>
+                                </section>
+                                <h3>Standard Lists</h3>
+                                <section>
+                                    <table class="table table-striped table-bordered" width="100%" cellspacing="0" id="listTabel">
+                                        <tr>
+                                            <th>List Name
+                                            </th>
+                                            <th>List values
+                                            </th>
+                                            <th> Actions
+                                            </th>
+                                            <th>Enable/Disable
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>States
+                                            </td>
+                                            <td>
+                                                <select class="" style="width:100%">
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <a href="dashboard.html" class="fa fa-pencil icon-pencil" style="color:limegreen;font-size:20px"></a> &nbsp;&nbsp;
+                                                <a class="fa fa-file icon-file" style="color:cornflowerblue;font-size:18px"></a>
+                                                &nbsp;&nbsp;
+                                                <a class="fa fa-trash icon-trash btnDelete" style="color:crimson;font-size:20px"></a>
+                                            </td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zip codes
+                                            </td>
+                                            <td>
+                                                <select class="" style="width:100%">
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <a href="dashboard.html" class="fa fa-pencil icon-pencil" style="color:limegreen;font-size:20px"></a> &nbsp;&nbsp;
+                                                <a class="fa fa-file icon-file" style="color:cornflowerblue;font-size:18px"></a>
+                                                &nbsp;&nbsp;
+                                                <a class="fa fa-trash icon-trash btnDelete" style="color:crimson;font-size:20px"></a>
+                                            </td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <input type="text" class="form-text" id="listName" required>
+                                            <span class="bar"></span>
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <textarea placeholder="type your message here.." rows="6" cols="55" id="listData"></textarea>
+                                            <span class="bar"></span>
+                                            <br>
+                                            <input type="button" style="margin: 0px 5px;" id="addList" class="btn btn-success pull-left" value="Add List" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="panel" style="margin-top:80px">
+                                            <div class="panel-body">
+                                                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone2"></form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <h3>Custom Lists</h3>
+                                <section>
+                                    <table class="table table-striped table-bordered" width="100%" cellspacing="0" id="custlistTable">
+                                        <tr>
+                                            <th>List Name
+                                            </th>
+                                            <th>List values
+                                            </th>
+                                            <th> Actions
+                                            </th>
+                                            <th>Enable/Disable
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>Doctypes
+                                            </td>
+                                            <td>
+                                                <select class="" style="width:100%">
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <a href="dashboard.html" class="fa fa-pencil icon-pencil" style="color:limegreen;font-size:20px"></a> &nbsp;&nbsp;
+                                                <a class="fa fa-file icon-file" style="color:cornflowerblue;font-size:18px"></a>
+                                                &nbsp;&nbsp;
+                                                <a class="fa fa-trash icon-trash btnDelete" style="color:crimson;font-size:20px"></a>
+                                            </td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Loan Status
+                                            </td>
+                                            <td>
+                                                <select class="" style="width:100%">
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <a href="dashboard.html" class="fa fa-pencil icon-pencil" style="color:limegreen;font-size:20px"></a> &nbsp;&nbsp;
+                                                <a class="fa fa-file icon-file" style="color:cornflowerblue;font-size:18px"></a>
+                                                &nbsp;&nbsp;
+                                                <a class="fa fa-trash icon-trash btnDelete" style="color:crimson;font-size:20px"></a>
+                                            </td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <input type="text" class="form-text" id="custListName" required>
+                                            <span class="bar"></span>
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <textarea placeholder="type your message here.." rows="6" cols="55" id="custListData"></textarea>
+                                            <span class="bar"></span>
+                                            <br>
+                                            <input type="button" style="margin: 0px 5px;" id="addCustList" class="btn btn-success pull-left" value="Add List" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="panel" style="margin-top:80px">
+                                            <div class="panel-body">
+                                                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <h3>Modules</h3>
+                                <section>
+                                    <table class="table table-bordered table-striped table-condensed" id="modulesTab">
+                                        <tr>
+                                            <th>Module Name
+                                            </th>
+                                            <th>Property Name
+                                            </th>
+                                            <th>Property Value
+                                            </th>
+                                            <th>Enable/Disable
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>Cabinet</td>
+                                            <td>Mount point</td>
+                                            <td>/tmp/disk1/</td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Imagica</td>
+                                            <td>conversion-format</td>
+                                            <td>PDF</td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Juggernaut</td>
+                                            <td>uploadmimetypes</td>
+                                            <td>PDF,TIFF,XLS</td>
+                                            <td>
+                                                <div class="form-group form-animate-checkbox">
+                                                    <input type="checkbox" class="checkbox">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable7"></table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable8"></table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable9"></table>
+                                    <table class="table tree table-bordered table-striped table-condensed" id="dynaTable10"></table>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <input type="text" class="form-text" required id="moduleName">
+                                            <span class="bar"></span>
+                                            <label>Module Name</label>
+                                        </div>
+                                        <input type="button" style="margin: 0px 5px;" id="addModules" class="btn btn-success pull-left" value="Add Property" />
+                                        <input type="button" style="margin: 0px 5px;" id="savePrp" class="btn btn-success pull-left" value="Save" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-8" id="modContainer">
+                                            <table style="margin-top:25px;" class="table table-striped table-bordered" width="100%" cellspacing="0" id="modTable"></table>
+                                        </div>
+                                    </div>
+                                </section>
+                                <h3>Validations</h3>
+                                <section>
+                                    <div class="form-group">
+                                        <h4>Standard validations</h4>
+                                        <select class="" style="width:100%" placeholder="Global Validations">
+                                            <option value="Email">Email</option>
+                                            <option value="Email">Password</option>
+                                            <option value="Numeric">Numeric</option>
+                                            <option value="Demo">AlphaNumeric</option>
+                                            <option value="AlphaNumeric">Telephone</option>
+                                            <option value="Date">Date</option>
+                                        </select>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group" placeholder="Custum Validations">
+                                        <h4>Custom Validations</h4>
+                                        <select class="" style="width:100%">
+                                            <option value="Special Characters">Special Characters</option>
+                                            <option value="File Name">File Name</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <input type="text" class="form-text" id="val" required>
+                                            <span class="bar"></span>
+                                            <label>Add Custom Validation</label>
+                                        </div>
+                                        <div class="form-group form-animate-text" style="margin-top:40px !important;">
+                                            <textarea placeholder="script goes here.." rows="6" cols="55" id="valScript"></textarea>
+                                            <span class="bar"></span>
+                                            <br>
+                                            <input type="button" style="margin: 0px 5px;" id="addCustList" class="btn btn-success pull-left" value="Attach Script" />
+                                        </div>
+                                    </div>
+                                </section>
+                                <h3>UI Setup</h3>
+                                <section>
+                                    <div>
+                                        <map name="beachmap">
+                                            <area href="#" id="homeMap" shape="rect" coords="729,117,71,652" alt="Flag" title="click here">
+                                        </map>
+                                    </div>
+                                    <div>
+                                        <map name="vaultmap">
+                                            <area href="#" id="vaultMapSearch" shape="rect" coords="269,157,91,32" alt="Flag" title="click here">
+                                            <area href="#" id="vaultMapUpload" shape="rect" coords="479,217,281,32" alt="Flag" title="click here">
+                                            <!--  <area href="#" id="vaultMap" shape="rect" coords="1429,207,771,32" alt="Flag" title="click here"> -->
+                                        </map>
+                                    </div>
+                                    <img id="preview" height="300" width="450" style="width:100%;height:550px" src="asset/img/home.png" usemap="#beachmap" />
+                                    <img id="preview2" height="300" width="450" style="width:100%;height:550px;display:none" src="asset/img/vault.png" usemap="#vaultmap" />
+                                    <!--                                    <select class="" style="width:100%" name="tenentType" id="privileges">
+                                        <option value="">please select a UI widget to configure</option>
+                                        <option value="Grid">Grid</option>
+                                        <option value="snapshot">Document Information / snapshot</option>
+                                        <option value="Upload">Upload</option>
+                                    </select> -->
+                                    <hr>
+                                    <div id="resources1" style=" display: none;">
+                                        <!-- <div class="form-group">
+                                            <div class="panel box-v1">
+                                                <div class="panel-heading">
+                                                </div>
+                                                <div class="panel-body text-center">
+                                                    <p id="preview">Preview</p>
+                                                    
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <form id="testForm" action="javascript:test()">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">Component Type</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="col-sm-12 padding-0">
+                                                            <select class="form-control" name="config.Component_type">
+                                                                <option value="Basic Grid">Basic Grid</option>
+                                                                <option value="Advanced Grid">Advanced Grid</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="clearfix"></span>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">Pagable</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="col-sm-12 padding-0">
+                                                            <select class="form-control" name="config.pageable">
+                                                                <option value="True">True</option>
+                                                                <option value="False">False</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">pageSize</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="number" name="config.pageSize" class="form-control" placeholder="pageSize">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">Sortable</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="col-sm-12 padding-0">
+                                                            <select class="form-control" name="config.sortable">
+                                                                <option value="True">True</option>
+                                                                <option value="False">False</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="clearfix"></span>
+                                            <label>column Defination</label>
+                                            <div class="form-group">
+                                                <table class="table" id="dynaCol">
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="config.columnDefs[0].field" class="form-control" placeholder="field">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="config.columnDefs[0].title" class="form-control" placeholder="title">
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-control" name="config.columnDefs[0].searchable">
+                                                                <option value="True">True</option>
+                                                                <option value="False">False</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-control" name="config.columnDefs[0].meatadataView">
+                                                                <option value="True">True</option>
+                                                                <option value="False">False</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <input type="button" style="margin: 0px 5px;" id="addCols" class="btn btn-success pull-left" value="Add Column" />
+                                                <input type="submit" id="submit" class="btn btn-success pull-left" value="save" />
+                                            </div>
+                                        </form>
+                                        <span class="clearfix"></span>
+                                        <div class="well">
+                                            <pre><code id="testArea"></code></pre>
+                                        </div>
+                                    </div>
+                                    <div id="resources2" style=" display: none;">
+                                        <!--  <div class="form-group">
+                                            <div class="panel box-v1">
+                                                <div class="panel-heading">
+                                                </div>
+                                                <div class="panel-body text-center">
+                                                    <p id="preview">Preview</p>
+                                                    <img id="gridImg" height="300" width="450" src="asset/img/upload.png" />
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <form id="testForm2" action="javascript:test2()">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-10">
+                                                        <div class="col-sm-12 padding-0">
+                                                            <dl>
+                                                                <dt></dt>Formats
+                                                                <dd>
+                                                                    <label>
+                                                                        <input type="checkbox" name="config.format[]" value="pdf" /> pdf</label>
+                                                                </dd>
+                                                                <dd>
+                                                                    <label>
+                                                                        <input type="checkbox" name="config.format[]" value="tiff" /> tiff</label>
+                                                                </dd>
+                                                                <dd>
+                                                                    <label>
+                                                                        <input type="checkbox" name="config.format[]" value="xls" /> xls</label>
+                                                                </dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <span class="clearfix"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">lable</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="config.lable" class="form-control" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <span class="clearfix"></span>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">Upload file size</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="number" name="config.uploadFileSize" class="form-control" placeholder="pageSize">
+                                                    </div>
+                                                </div>
+                                                <span class="clearfix"></span>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label text-right">Upload Limit</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="number" name="config.uploadLimit" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="clearfix"></span>
+                                            <label>Property Defination</label>
+                                            <div class="form-group">
+                                                <table class="table" id="dynaProp">
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" name="config.properties[0].property" class="form-control" placeholder="property">
+                                                        </td>
+                                                        <td>
+                                                            <select class="form-control" name="config.properties[0].type">
+                                                                <option value="Numeric">Numeric</option>
+                                                                <option value="String">String</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <input type="button" style="margin: 0px 5px;" id="addProp" class="btn btn-success pull-left" value="Add property" />
+                                                <input type="submit" id="submit2" class="btn btn-success pull-left" value="save" />
+                                            </div>
+                                        </form>
+                                        <span class="clearfix"></span>
+                                        <div class="well">
+                                            <pre><code id="testArea2"></code></pre>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end: content -->
+    <!-- start: right menu -->
+    <!-- end: right menu -->
+    </div>
+    <!-- start: Mobile -->
+    <button id="mimin-mobile-menu-opener" class="animated rubberBand btn btn-circle btn-danger">
+        <span class="fa fa-bars"></span>
+    </button>
+    <!-- end: Mobile -->
+    <!-- end: Content -->
+    <!-- start: Javascript -->
+    <script src="asset/js/jquery.min.js"></script>
+    <script src="asset/js/jquery.ui.min.js"></script>
+    <script src="asset/js/bootstrap.min.js"></script>
+    <script src="asset/js/angular.js"></script>
+    <!-- plugins 
+    <script src="https://code.angularjs.org/1.3.5/angular-animate.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>-->
+    <script src="asset/js/plugins/moment.min.js"></script>
+    <script src="asset/js/plugins/jquery.nicescroll.js"></script>
+    <script src="asset/js/plugins/moment.min.js"></script>
+    <script src="asset/js/plugins/dropzone.js"></script>
+    <!-- custom -->
+    <script src="asset/js/main.js"></script>
+    <script src="asset/js/ng.js"></script>
+    <script src="asset/js/dash.js"></script>
+    <script src="asset/js/jquery.treegrid.bootstrap3.js"></script>
+    <script src="asset/js/jquery.treegrid.min.js"></script>
+    <script src="asset/js/jquery.steps.min.js"></script>
+    <script src="asset/js/plugins/select2.full.min.js"></script>
+    <script type="text/javascript" src="asset/js/form2object.js"></script>
+    <script type="text/javascript" src="asset/js/json2.js"></script>
+    <!--  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+    end: Javascript -->
+    <script>
+    var counter = 0;
+    var mcounter = 0;
+    var colCount = 0;
+    var propCount = 0;
+    $("#example-vertical2").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        stepsOrientation: "vertical"
+            // console.log(angular.element('#content-2').scope());
+            // angular.element(document.getElementById('content-2')).scope().addRow();
+    });
+
+    $('#dynaTable1').show();
+    $('#dynaTable2').show();
+
+    $('.tree').treegrid({
+        expanderExpandedClass: 'glyphicon glyphicon-minus',
+        expanderCollapsedClass: 'glyphicon glyphicon-plus'
+    });
+    // add standard list
+    $("#addList").click(function() {
+        var listName = $('#listName').val();
+        var string = $('#listData').val();
+        var valuesArray = string.split(',');
+        $('#listTabel').append('<tr><td>' + listName + '</td><td><select id="' + listName + '" style="width:100%"></select></td><td><a href="dashboard.html"class="fa fa-pencil icon-pencil pencil"></a>&nbsp;&nbsp;<a class="fa fa-file icon-file file"></a>&nbsp;&nbsp;<a class="fa fa-trash icon-trash trash btnDelete"></a></td><td><div class="form-group form-animate-checkbox"><input type="checkbox" class="checkbox"></div></td></tr>');
+        var sel = $("#" + listName);
+        for (var i = 0; i < valuesArray.length; i++) {
+            var opt = document.createElement('option');
+            opt.innerHTML = valuesArray[i];
+            opt.value = valuesArray[i];
+            sel.append(opt);
+        }
+        $('#listName').val('');
+        $('#listData').val('');
+    });
+    //add custom list
+    $("#addCustList").click(function() {
+        var custListName = $('#custListName').val();
+        var custListString = $('#custListData').val();
+        var custValuesArray = custListString.split(",");
+        $('#custlistTable').append('<tr><td>' + custListName + '</td><td><select id="' + custListName + '" style="width:100%"></select></td><td><a href="dashboard.html"class="fa fa-pencil icon-pencil pencil"></a>&nbsp;&nbsp;<a class="fa fa-file icon-file file"></a>&nbsp;&nbsp;<a class="fa fa-trash icon-trash trash btnDelete"></a></td><td><div class="form-group form-animate-checkbox"><input type="checkbox" class="checkbox"></div></td></tr>');
+        var sel2 = $("#" + custListName);
+        for (var j = 0; j < custValuesArray.length; j++) {
+            var opt2 = document.createElement('option');
+            opt2.innerHTML = custValuesArray[j];
+            opt2.value = custValuesArray[j];
+            sel2.append(opt2);
+        }
+        //custListName = "";
+        $('#custListName').val('');
+        $('#custListData').val('');
+    });
+
+    $('#addProperty').click(function() {
+        // var prpName = $('#prpName').val();
+        $('#prpTable').append(' <tr><td><input type="text" class="prpinput"class="form-text" placeholder="property name" required></td><td> <select class=""style="width:100%" name="tenentType" ng-model="data.tenentType"><option value="">Property Type</option><option value="Template">Template</option><option value="Document">Document</option><option value="Bussiness Object">Bussiness Object</option></select></td><td><select class="" style="width:100%"><option value="">Property Validation</option><option value="Template">Template</option><option value="Document">Document</option><option value="Bussiness Object">Bussiness Object</option></select></td><td><input type="button" style="margin: 0px 5px;" value="Delete" class="btn btn-primary" ng-click=""/></td></tr>');
+    });
+
+
+    //entity 
+    $('#save').click(function() {
+        counter = counter + 1;
+        var entName = $('#entityName').val();
+        if (entName.length > 0) {
+            if (counter == 1) {
+                $('#dynaTable1').append('<tr class="treegrid-1"><td>' + entName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                var Contain = "";
+                $("#prpContainer :text").each(function() {
+                    $('#dynaTable1').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+
+                });
+                $('.tree').treegrid({
+                    expanderExpandedClass: 'glyphicon glyphicon-minus',
+                    expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                });
+                $('#dynaTable1').show();
+                $('#entityName').val(''); //clearentity name 
+                $('#prpTable').empty(); //clear table
+            } else
+            if (counter == 2) {
+                $('#dynaTable2').append('<tr class="treegrid-1"><td>' + entName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                var Contain = "";
+                $("#prpContainer :text").each(function() {
+                    $('#dynaTable2').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                });
+                $('.tree').treegrid({
+                    expanderExpandedClass: 'glyphicon glyphicon-minus',
+                    expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                });
+                $('#dynaTable2').show();
+                $('#entityName').val(''); //clearentity name 
+                $('#prpTable').empty(); //clear table
+            } else
+            if (counter == 3) {
+                $('#dynaTable3').append('<tr class="treegrid-1"><td>' + entName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                var Contain = "";
+                $("#prpContainer :text").each(function() {
+                    $('#dynaTable3').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                });
+                $('.tree').treegrid({
+                    expanderExpandedClass: 'glyphicon glyphicon-minus',
+                    expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                });
+                $('#dynaTable3').show();
+                $('#entityName').val(''); //clearentity name 
+                $('#prpTable').empty(); //clear table
+            } else
+            if (counter == 4) {
+                $('#dynaTable4').append('<tr class="treegrid-1"><td>' + entName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                var Contain = "";
+                $("#prpContainer :text").each(function() {
+                    $('#dynaTable4').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                });
+                $('.tree').treegrid({
+                    expanderExpandedClass: 'glyphicon glyphicon-minus',
+                    expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                });
+                $('#dynaTable4').show();
+                $('#entityName').val(''); //clearentity name 
+                $('#prpTable').empty(); //clear table
+            }
+        }
+    });
+
+    $('#addModules').click(function() {
+        // var prpName = $('#prpName').val();
+        $('#modTable').append(' <tr><td><input type="text" class="prpinput"class="form-text" placeholder="property name" required></td><td><input type="text" class="prpinput"class="form-text" placeholder="property value" required></td><td><input type="button" value="Delete" class="btn btn-primary" ng-click=""/></td></tr>');
+    });
+
+    //modules
+
+    $('#savePrp').click(function() {
+        mcounter = mcounter + 1;
+        var modName = $('#moduleName').val();
+        /*  if (modName.length > 0) {
+              if (mcounter == 1) {
+                  $('#dynaTable6').append('<tr class="treegrid-1"><td>' + modName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  var Contain = "";
+                  $("#modContainer :text").each(function() {
+                      $('#dynaTable6').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+
+                  });
+                  $('.tree').treegrid({
+                      expanderExpandedClass: 'glyphicon glyphicon-minus',
+                      expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                  });
+                  $('#dynaTable6').show();
+                  $('#moduleName').val(''); //clearentity name 
+                  $('#modTable').empty(); //clear table
+              } else
+              if (mcounter == 2) {
+                  $('#dynaTable7').append('<tr class="treegrid-1"><td>' + modName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  var Contain = "";
+                  $("#modContainer :text").each(function() {
+                      $('#dynaTable7').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  });
+                  $('.tree').treegrid({
+                      expanderExpandedClass: 'glyphicon glyphicon-minus',
+                      expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                  });
+                  $('#dynaTable7').show();
+                  $('#moduleName').val(''); //clearentity name 
+                  $('#modTable').empty(); //clear table
+              } else
+              if (mcounter == 3) {
+                  $('#dynaTable8').append('<tr class="treegrid-1"><td>' + modName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  var Contain = "";
+                  $("#modContainer :text").each(function() {
+                      $('#dynaTable8').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  });
+                  $('.tree').treegrid({
+                      expanderExpandedClass: 'glyphicon glyphicon-minus',
+                      expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                  });
+                  $('#dynaTable8').show();
+                  $('#moduleName').val(''); //clearentity name 
+                  $('#modTable').empty(); //clear table
+              } else
+              if (mcounter == 4) {
+                  $('#dynaTable9').append('<tr class="treegrid-1"><td>' + modName + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  var Contain = "";
+                  $("#modContainer :text").each(function() {
+                      $('#dynaTable9').append(' <tr class="treegrid-2 treegrid-parent-1"><td>' + $(this).val() + '</td><td class="hidden-xs">Additional info</td><td class="hidden-xs hidden-sm">Additional info2</td><td class="hidden-xs hidden-sm hidden-md">Additional info3</td></tr>');
+                  });
+                  $('.tree').treegrid({
+                      expanderExpandedClass: 'glyphicon glyphicon-minus',
+                      expanderCollapsedClass: 'glyphicon glyphicon-plus'
+                  });
+                  $('#dynaTable9').show();
+                  $('#moduleName').val(''); //clearentity name 
+                  $('#modTable').empty(); //clear table
+              }
+          }*/
+        $('#modulesTab').append('<tr><td>' + modName + '</td><td>--</td><td>--</td><td><div class="form-group form-animate-checkbox"><input type="checkbox" class="checkbox"></div></td></tr>');
+        $('#moduleName').val('');
+    });
+    $('#addCols').click(function() {
+        colCount = colCount + 1;
+        $('#dynaCol').append(' <tr><td><input type="text" name="config.columnDefs[' + colCount + '].field" class="form-control" placeholder="field"></td><td><input type="text" name="config.columnDefs[' + colCount + '].title" class="form-control" placeholder="title"></td><td><select class="form-control" name="config.columnDefs[' + colCount + '].searchable"><option value="True">True</option><option value="False">False</option></select></td><td><select class="form-control" name="config.columnDefs[' + colCount + '].meatadataView"><option value="True">True</option><option value="False">False</option></select></td></tr>');
+    });
+
+    $('#addProp').click(function() {
+        propCount = propCount + 1;
+        $('#dynaProp').append(' <tr><td><input type="text" name="config.columnDefs[' + propCount + '].property" class="form-control" placeholder="property"></td><td><select class="form-control" name="config.columnDefs[' + propCount + '].type"><option value="Numeric">Numeric</option><option value="String">String</option></select></td></tr>');
+    });
+
+    var Privileges = $('#privileges');
+    var select = this.value;
+    Privileges.change(function() {
+        if ($(this).val() == 'Grid') {
+            $('#resources1').show();
+            $('#resources2').hide();
+        } else if ($(this).val() == 'Upload') {
+            $('#resources1').hide();
+            $('#resources2').show();
+        } else {
+            $('#resources1').hide();
+            $('#resources2').hide();
+        }
+    });
+
+
+    $('#vaultMapSearch').click(function() {
+        $('#resources1').show();
+        $('#resources2').hide();
+    });
+    $('#vaultMapUpload').click(function() {
+        $('#resources1').hide();
+        $('#resources2').show();
+    });
+
+
+
+    $("#custlistTable").on('click', '.btnDelete', function() {
+        $(this).closest('tr').remove();
+
+    })
+
+    $("#listTabel").on('click', '.btnDelete', function() {
+        $(this).closest('tr').remove();
+
+    });
+
+    $('#homeMap').click(function() {
+        $('#preview').hide();
+        $('#preview2').show();
+    });
+
+    function test() {
+        var formData = form2object('testForm', '.', true,
+            function(node) {
+                if (node.id && node.id.match(/callbackTest/)) {
+                    return {
+                        name: node.id,
+                        value: node.innerHTML
+                    };
+                }
+            });
+
+        document.getElementById('testArea').innerHTML = JSON.stringify(formData, null, '\t');
+    }
+
+    function test2() {
+        var formData = form2object('testForm2', '.', true,
+            function(node) {
+                if (node.id && node.id.match(/callbackTest/)) {
+                    return {
+                        name: node.id,
+                        value: node.innerHTML
+                    };
+                }
+            });
+
+        document.getElementById('testArea2').innerHTML = JSON.stringify(formData, null, '\t');
+    }
+    </script>
+    <style>
+    .trash {
+        color: crimson;
+        font-size: 20px
+    }
+    
+    .file {
+        color: cornflowerblue;
+        font-size: 18px
+    }
+    
+    .pencil {
+        color: limegreen;
+        font-size: 20px
+    }
+    </style>
+</body>
+
+</html>
